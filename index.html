@@ -974,21 +974,33 @@ get('copy').addEventListener('click', async () => {
   }
 });
 
-try {
-  const url = new URL(location.href);
-  if (url.hash.startsWith('#r=')) {
-    model = InviteScope.decode(url.hash.slice(3));
-    shared = true;
-    selectedZones = model.zones;
-    report();
-  } else {
-    const requested = url.searchParams.get('example');
-    const example = Object.hasOwn(examples, requested) ? requested : 'fold';
-    get('sample-' + example).setAttribute('aria-current', 'page');
-    loadCalendar(examples[example], true);
-  }
-} catch (error) { fail(error); }
-renderZones();
+function openLocation() {
+  importRevision++;
+  source = null;
+  shared = false;
+  selectedZones = [...defaultZones];
+  get('event-control').hidden = true;
+  get('file').value = '';
+  document.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
+  try {
+    const url = new URL(location.href);
+    if (url.hash.startsWith('#r=')) {
+      model = InviteScope.decode(url.hash.slice(3));
+      shared = true;
+      selectedZones = model.zones;
+      report();
+    } else {
+      const requested = url.searchParams.get('example');
+      const example = Object.hasOwn(examples, requested) ? requested : 'fold';
+      get('sample-' + example).setAttribute('aria-current', 'page');
+      loadCalendar(examples[example], true);
+    }
+  } catch (error) { fail(error); }
+  renderZones();
+}
+
+window.addEventListener('hashchange', openLocation);
+openLocation();
 </script>
 </body>
 </html>
