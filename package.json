@@ -1,0 +1,14 @@
+{
+  "name": "invitescope",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.js",
+    "check:build": "node build.js --check",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ical.js": "2.2.1"
+  }
+}

@@ -1,0 +1,67 @@
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+  color: #1e2842;
+  background: #f5f5f0;
+  --ink: #1e2842;
+  --muted: #515c70;
+  --line: #d9dbd4;
+  --surface: #fffefa;
+  --accent: #323c86;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+.layout { width: min(100%, 1150px); padding: 0 30px 32px; margin: auto; }
+.masthead { min-height: 67px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.masthead nav { font-size: .87rem; }
+.brand { font-size: 1.20rem; font-weight: 780; text-decoration: none; color: var(--ink); letter-spacing: -.025em; }
+.hero { padding: 37px 0 27px; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(2rem, 6vw, 3.45rem); line-height: 1.15; letter-spacing: -.05em; margin-bottom: 12px; }
+.hero p, .hint, footer { color: var(--muted); line-height: 1.55; }
+.workspace { display: grid; grid-template-columns: minmax(238px, .9fr) minmax(0, 2.5fr); gap: 16px; align-items: start; }
+.controls, .result { background: var(--surface); border: 1px solid var(--line); border-radius: 13px; }
+.controls { padding: 17px; }
+.control-section + .control-section { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 16px; }
+.controls h2 { font-size: .94rem; margin-bottom: 8px; }
+.example-list { display: grid; gap: 5px; }
+.example-list a { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-radius: 5px; color: var(--ink); text-decoration: none; font-size: .9rem; }
+.example-list a:hover, .example-list [aria-current] { background: #eaebfa; color: var(--accent); }
+.controls label { display: grid; gap: 4px; font-size: .85rem; }
+.controls label[hidden] { display: none; }
+select, input { font: inherit; color: var(--ink); min-width: 0; }
+select, #share-url { min-height: 34px; background: #f8f8f4; border: 1px solid #c6c9c1; border-radius: 5px; padding-inline: 5px; width: 100%; }
+.file-label { padding: 7px 0; }
+.hint { margin-top: 7px; font-size: .78rem; }
+.zones label + label { margin-top: 6px; }
+.result { min-height: 330px; padding: 19px 22px; }
+#message:not(:empty) { margin-bottom: 10px; color: #9a3611; }
+.result-head { display: flex; justify-content: space-between; gap: 16px; align-items: start; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.heading { min-width: 0; overflow-wrap: anywhere; }
+#event-title { font-size: clamp(1.22rem, 4vw, 1.65rem); margin: 3px 0 5px; }
+#mode, #reference { color: var(--muted); font-size: .84rem; line-height: 1.55; }
+button { font: inherit; padding: 7px 10px; min-height: 38px; border-radius: 6px; border: 1px solid var(--accent); color: white; background: var(--accent); white-space: nowrap; cursor: pointer; }
+button:hover { background: #454fa3; }
+:focus-visible { outline: 2px solid #495cc3; outline-offset: 3px; }
+ul { padding: 0; list-style: none; }
+#times { margin: 9px 0 0; }
+.time-row { display: grid; grid-template-columns: minmax(110px, 1fr) minmax(0, 2fr); gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.time-row strong { overflow-wrap: anywhere; font-size: .87rem; }
+.time-row time { font: 1.02rem ui-monospace, Consolas, monospace; }
+.time-row small { color: var(--muted); display: block; margin-top: 3px; }
+#warnings { background: #fff6dc; color: #644812; padding: 10px 12px; font-size: .87rem; border-radius: 6px; margin: 14px 0 0; line-height: 1.55; }
+#warnings li + li { margin-top: 5px; }
+.sharing { padding: 12px; margin-top: 15px; border: 1px solid var(--line); border-radius: 7px; }
+.sharing label { font-weight: 700; }
+.sharing p { font-size: .83rem; margin: 4px 0; color: var(--muted); }
+.sharing > div { display: flex; gap: 7px; }
+footer { margin-top: 16px; font-size: .83rem; }
+@media (max-width: 670px) {
+  .layout { padding-inline: 15px; }
+  .hero { padding: 21px 0 16px; }
+  .workspace { grid-template-columns: minmax(0, 1fr); }
+  .result { grid-row: 1; padding: 14px; }
+  .result-head { gap: 9px; flex-wrap: wrap; }
+  .time-row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}

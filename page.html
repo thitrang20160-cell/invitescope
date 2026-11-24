@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="打开 .ics 邀请，对照三个时区，核对夏令时和浮动时间。邀请文件在本机读取。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <link rel="canonical" href="https://thitrang20160-cell.github.io/invitescope/">
+  <title>InviteScope · 日历邀请时区核对</title>
+  <style>/* CSS */</style>
+</head>
+<body>
+  <main class="layout">
+    <header class="masthead">
+      <a href="?" class="brand">InviteScope</a>
+      <nav aria-label="项目链接"><a href="https://github.com/thitrang20160-cell/invitescope" target="_blank" rel="noopener noreferrer">GitHub 源码 ↗</a></nav>
+    </header>
+    <section class="hero" aria-labelledby="title">
+      <h1 id="title">这场会议，到底几点？</h1>
+      <p>导入 .ics 邀请，对照三个时区，看看夏令时回拨、跨日和缺失时区会怎样影响日程。</p>
+    </section>
+    <div class="workspace">
+      <aside class="controls" aria-label="选择日程和时区">
+        <div class="control-section">
+          <h2>试用样例</h2>
+          <nav class="example-list" aria-label="试用样例">
+            <a id="sample-fold" href="?example=fold">夏令时回拨 <span aria-hidden="true">↗</span></a>
+            <a id="sample-floating" href="?example=floating">邀请缺少时区 <span aria-hidden="true">↗</span></a>
+            <a id="sample-rollover" href="?example=rollover">跨日会议 <span aria-hidden="true">↗</span></a>
+          </nav>
+        </div>
+        <div class="control-section">
+          <h2>核对自己的邀请</h2>
+          <label id="file-display" class="file-label"><span>选择 .ics 文件</span><input id="file" type="file" accept=".ics,.ical,text/calendar" aria-label="选择 .ics 文件"></label>
+          <label id="event-control" hidden>选择日程 <select id="event"></select></label>
+          <p class="hint">文件留在本机。选择文件即可查看结果。</p>
+        </div>
+        <div class="control-section zones">
+          <h2>对照时区</h2>
+          <label>时区 1 <select id="zone-one"></select></label>
+          <label>时区 2 <select id="zone-two"></select></label>
+          <label>时区 3 <select id="zone-three"></select></label>
+        </div>
+      </aside>
+      <section id="result" class="result" aria-labelledby="event-title">
+        <p id="message" role="status" aria-live="polite"></p>
+        <div id="report" hidden>
+          <div class="result-head">
+            <div class="heading">
+              <p id="mode"></p>
+              <h2 id="event-title"></h2>
+              <p id="reference"></p>
+            </div>
+            <button id="share" type="button">生成分享链接</button>
+          </div>
+          <ul id="times" aria-label="各时区的日程时间"></ul>
+          <ul id="warnings" aria-label="时区提示" hidden></ul>
+          <div id="sharing" class="sharing" hidden>
+            <label for="share-url">分享核对结果</label>
+            <p>链接包含时间、对照时区和提示。标题、参会人、地点和会议链接留在本机。</p>
+            <div><input id="share-url" readonly><button id="copy" type="button">复制</button></div>
+            <p id="copy-status" role="status"></p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer>适合核对单次邀请及重复日程的文件所列时间。具体客户端如何导入，以其实际显示为准。</footer>
+  </main>
+  <!-- ICAL-LICENSE -->
+  <script>/* LIB */</script>
+  <script>/* CORE */</script>
+  <script>/* APP */</script>
+</body>
+</html>
